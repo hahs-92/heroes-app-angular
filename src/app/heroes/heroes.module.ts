@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { HeroesRoutingModule } from './heroes-routing.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 //pages
 import { AddHeroeComponent } from './pages/add-heroe/add-heroe.component';
@@ -18,6 +19,6 @@ import { ListHeroesComponent } from './pages/list-heroes/list-heroes.component';
     HomeComponent,
     ListHeroesComponent,
   ],
-  imports: [CommonModule, HeroesRoutingModule],
+  imports: [CommonModule, HeroesRoutingModule, FlexLayoutModule],
 })
 export class HeroesModule {}
