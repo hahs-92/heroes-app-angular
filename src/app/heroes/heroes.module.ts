@@ -13,6 +13,7 @@ import { HeroeComponent } from './pages/heroe/heroe.component';
 import { SearchComponent } from './pages/search/search.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ListHeroesComponent } from './pages/list-heroes/list-heroes.component';
+import { CardHeroeComponent } from './components/card-heroe/card-heroe.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { ListHeroesComponent } from './pages/list-heroes/list-heroes.component';
     SearchComponent,
     HomeComponent,
     ListHeroesComponent,
+    CardHeroeComponent,
   ],
   imports: [
     CommonModule,
