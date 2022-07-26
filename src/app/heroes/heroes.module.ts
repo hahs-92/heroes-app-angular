@@ -4,6 +4,9 @@ import { CommonModule } from '@angular/common';
 import { HeroesRoutingModule } from './heroes-routing.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
+//materialModule
+import { MaterialModule } from '../material/material.module';
+
 //pages
 import { AddHeroeComponent } from './pages/add-heroe/add-heroe.component';
 import { HeroeComponent } from './pages/heroe/heroe.component';
@@ -19,6 +22,11 @@ import { ListHeroesComponent } from './pages/list-heroes/list-heroes.component';
     HomeComponent,
     ListHeroesComponent,
   ],
-  imports: [CommonModule, HeroesRoutingModule, FlexLayoutModule],
+  imports: [
+    CommonModule,
+    HeroesRoutingModule,
+    FlexLayoutModule,
+    MaterialModule,
+  ],
 })
 export class HeroesModule {}
