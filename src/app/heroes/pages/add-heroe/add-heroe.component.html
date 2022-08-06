@@ -1,1 +1,50 @@
-<p>add-heroe works!</p>
+<h1>Nuevo Heroe</h1>
+
+<main fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px">
+  <div fxFlex="50" fxLayout="column">
+    <section fxLayout="row" fxLayoutGap="20px">
+      <mat-form-field fxFlex="100">
+        <mat-label>Super Heroe</mat-label>
+        <input matInput type="text" required="" />
+      </mat-form-field>
+
+      <mat-form-field fxFlex="100">
+        <mat-label>Alter ego</mat-label>
+        <input matInput type="text" required="" />
+      </mat-form-field>
+    </section>
+
+    <mat-form-field fxFlex="100">
+      <mat-label>Primera Aparicion</mat-label>
+      <input matInput type="text" required="" />
+    </mat-form-field>
+
+    <mat-form-field fxFlex="100">
+      <mat-label>Personajes</mat-label>
+      <input matInput type="text" required="" />
+    </mat-form-field>
+
+    <mat-form-field fxFlex="100">
+      <mat-label>Creador</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let publisher of publishers" [value]="publisher.id">
+          {{ publisher.desc }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field fxFlex="100">
+      <mat-label>Foto Url</mat-label>
+      <input matInput type="url" required />
+    </mat-form-field>
+
+    <br />
+
+    <button mat-raised-button color="primary">Guardar</button>
+  </div>
+
+  <section *ngIf="!heroe" fxFlex="50">
+    <!-- <img [src]="heroe | image" alt="" /> -->
+    2
+  </section>
+</main>
