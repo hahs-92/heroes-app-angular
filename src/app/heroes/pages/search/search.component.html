@@ -4,7 +4,7 @@
     <mat-divider></mat-divider>
   </section>
 
-  <section>
+  <section fxLayout="column">
     <h3>Buscador</h3>
 
     <mat-form-field class="example-full-width" appearance="fill">
@@ -27,10 +27,14 @@
           {{ heroe.superhero }}
         </mat-option>
       </mat-autocomplete>
+
+      <mat-option *ngIf="!heroes.length && query" value="">
+        No hay heroes con el nombre {{ query }}
+      </mat-option>
     </mat-form-field>
   </section>
 </main>
 
-<div>
-  <pre> {{ heroeSelected | json }}  </pre>
-</div>
+<article *ngIf="heroeSelected">
+  <app-card-heroe [heroe]="heroeSelected"></app-card-heroe>
+</article>
