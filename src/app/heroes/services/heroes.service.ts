@@ -1,19 +1,26 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+//env
+import { environment } from '../../../environments/environment';
 //interfaces
-import { Heroe, Publisher } from '../interfaces/heroes.interface';
+import { Heroe } from '../interfaces/heroes.interface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class HeroesService {
+  private baseUrl = environment.baseUrl;
+
   constructor(private http: HttpClient) {}
 
   getHeroes() {
-    return this.http.get<Heroe[]>('http://localhost:3000/heroes');
+    return this.http.get<Heroe[]>(`${this.baseUrl}/heroes`);
   }
 
   getHeroeById(heroeId: string) {
-    return this.http.get<Heroe>(`http://localhost:3000/heroes/${heroeId}`);
+    return this.http.get<Heroe>(`${this.baseUrl}/heroes/${heroeId}`);
+  }
+  getHeroesBySuggestion(query: string) {
+    return this.http.get<Heroe[]>(`${this.baseUrl}/heroes?q=${query}&_limit=6`);
   }
 }
