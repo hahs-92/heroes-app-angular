@@ -74,4 +74,11 @@ export class AddHeroeComponent implements OnInit {
       });
     }
   }
+
+  deleteHeroe() {
+    console.log(this.heroe.id);
+    this.heroeService.deleteHeroe(this.heroe.id!).subscribe(console.log);
+
+    this.route.navigate(['/heroes']);
+  }
 }

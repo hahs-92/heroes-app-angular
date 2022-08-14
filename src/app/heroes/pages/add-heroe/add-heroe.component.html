@@ -50,6 +50,16 @@
     <button mat-raised-button color="primary" (click)="saveHeroe()">
       Guardar
     </button>
+
+    <button
+      *ngIf="heroe.id"
+      mat-raised-button
+      color="warn"
+      (click)="deleteHeroe()"
+    >
+      <mat-icon>remove</mat-icon>
+      Borrar
+    </button>
   </div>
 
   <section *ngIf="heroe" fxFlex="50">
