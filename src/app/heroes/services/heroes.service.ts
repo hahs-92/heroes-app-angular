@@ -27,4 +27,8 @@ export class HeroesService {
   saveHeroe(heroe: Heroe) {
     return this.http.post<Heroe>(`${this.baseUrl}/heroes`, heroe);
   }
+
+  updateHeroe(heroe: Heroe) {
+    return this.http.put<Heroe>(`${this.baseUrl}/heroes/${heroe.id}`, heroe);
+  }
 }

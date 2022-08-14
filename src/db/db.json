@@ -168,13 +168,22 @@
       "characters": "Norrin Radd"
     },
     {
-      "superhero": "Jinx",
-      "alter_ego": "Power",
-      "characters": "Jinx, Power",
+      "superhero": "JInx",
+      "alter_ego": "power",
+      "characters": "Jinx",
       "first_appearance": "LOL",
       "publisher": "Marvel Comics",
-      "alt_img": "https://random.imagecdn.app/500/150",
-      "id": "f6kZANa"
+      "alt_img": "",
+      "id": "3GbYSas"
+    },
+    {
+      "superhero": "Vic",
+      "alter_ego": "Victoria",
+      "characters": "Vic",
+      "first_appearance": "LOL",
+      "publisher": "Marvel Comics",
+      "alt_img": "",
+      "id": "zkjnIE7"
     }
   ]
 }
