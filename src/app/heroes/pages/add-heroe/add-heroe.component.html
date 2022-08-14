@@ -52,8 +52,7 @@
     </button>
   </div>
 
-  <section *ngIf="!heroe" fxFlex="50">
-    <!-- <img [src]="heroe | image" alt="" /> -->
-    2
+  <section *ngIf="heroe" fxFlex="50">
+    <img [src]="heroe | image" alt="" />
   </section>
 </main>

@@ -1,4 +1,4 @@
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, UrlSegment } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Heroe, Publisher } from '../../interfaces/heroes.interface';
 import { HeroesService } from '../../services/heroes.service';
@@ -7,13 +7,20 @@ import { switchMap } from 'rxjs';
 @Component({
   selector: 'app-add-heroe',
   templateUrl: './add-heroe.component.html',
-  styles: [],
+  styles: [
+    `
+      img {
+        width: 100%;
+        max-heigth: 100px;
+      }
+    `,
+  ],
 })
 export class AddHeroeComponent implements OnInit {
   publishers = [
     {
-      id: 'CD Comics',
-      desc: 'CD - Comics',
+      id: 'DC Comics',
+      desc: 'DC - Comics',
     },
     {
       id: 'Marvel Comics',
@@ -37,17 +44,19 @@ export class AddHeroeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.activateRoute.paramMap
-      .pipe(
-        switchMap((params) => {
-          const heroeId = params.get('id');
-          return this.heroeService.getHeroeById(heroeId as string);
-        })
-      )
-      .subscribe((heroe) => {
-        console.log(heroe);
-        this.heroe = heroe;
-      });
+    if (this.route.url.includes('edit')) {
+      this.activateRoute.paramMap
+        .pipe(
+          switchMap((params) => {
+            const heroeId = params.get('id');
+            return this.heroeService.getHeroeById(heroeId as string);
+          })
+        )
+        .subscribe((heroe) => {
+          console.log(heroe);
+          this.heroe = heroe;
+        });
+    }
   }
 
   saveHeroe() {
