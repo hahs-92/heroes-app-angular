@@ -23,4 +23,8 @@ export class HeroesService {
   getHeroesBySuggestion(query: string) {
     return this.http.get<Heroe[]>(`${this.baseUrl}/heroes?q=${query}&_limit=6`);
   }
+
+  saveHeroe(heroe: Heroe) {
+    return this.http.post<Heroe>(`${this.baseUrl}/heroes`, heroe);
+  }
 }

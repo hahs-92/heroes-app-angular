@@ -1,12 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { Heroe } from '../../interfaces/heroes.interface';
+import { Component } from '@angular/core';
+import { Heroe, Publisher } from '../../interfaces/heroes.interface';
+import { HeroesService } from '../../services/heroes.service';
 
 @Component({
   selector: 'app-add-heroe',
   templateUrl: './add-heroe.component.html',
   styles: [],
 })
-export class AddHeroeComponent implements OnInit {
+export class AddHeroeComponent {
   publishers = [
     {
       id: 'CD Comics',
@@ -18,9 +19,22 @@ export class AddHeroeComponent implements OnInit {
     },
   ];
 
-  heroe!: Heroe;
+  heroe: Heroe = {
+    superhero: '',
+    alter_ego: '',
+    characters: '',
+    first_appearance: '',
+    publisher: Publisher.DCComics,
+    alt_img: '',
+  };
 
-  constructor() {}
+  constructor(private heroeService: HeroesService) {}
 
-  ngOnInit(): void {}
+  saveHeroe() {
+    if (this.heroe.superhero.trim().length === 0) {
+      return;
+    }
+
+    this.heroeService.saveHeroe(this.heroe).subscribe(console.log);
+  }
 }
