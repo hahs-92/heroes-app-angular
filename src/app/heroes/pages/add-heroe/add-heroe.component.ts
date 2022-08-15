@@ -2,8 +2,10 @@ import { ActivatedRoute, Router, UrlSegment } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Heroe, Publisher } from '../../interfaces/heroes.interface';
 import { HeroesService } from '../../services/heroes.service';
-import { switchMap } from 'rxjs';
+import { of, switchMap } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmComponent } from '../../components/confirm/confirm.component';
 
 @Component({
   selector: 'app-add-heroe',
@@ -42,7 +44,8 @@ export class AddHeroeComponent implements OnInit {
     private activateRoute: ActivatedRoute,
     private route: Router,
     private heroeService: HeroesService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -80,10 +83,21 @@ export class AddHeroeComponent implements OnInit {
   }
 
   deleteHeroe() {
-    console.log(this.heroe.id);
-    this.heroeService.deleteHeroe(this.heroe.id!).subscribe(console.log);
+    const dialog = this.dialog.open(ConfirmComponent, {
+      data: { ...this.heroe },
+      width: '300px',
+    });
 
-    this.route.navigate(['/heroes']);
+    dialog
+      .afterClosed()
+      .pipe(
+        switchMap((resp) =>
+          resp ? this.heroeService.deleteHeroe(this.heroe.id!) : of(false)
+        )
+      )
+      .subscribe((resp) => {
+        if (resp) this.route.navigate(['/heroes']);
+      });
   }
 
   showSnackBar(message: string) {
